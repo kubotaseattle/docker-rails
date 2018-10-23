@@ -26,5 +26,15 @@ module Types
       existing&.update user.to_h
     end
 
+    # delete
+    field :delete_user, Boolean, null: false, description: "Delete a user" do
+      argument :id, ID, required: true
+    end
+
+    def delete_user(id:)
+      User.where(id: id).destroy_all
+      true
+    end
+
   end
 end
