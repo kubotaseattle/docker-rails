@@ -6,7 +6,8 @@ class Mutations::CreateUser < GraphQL::Schema::Mutation
   argument :email, String, required: false, camelize: false
 
   # resolveメソッドを定義し、引数に必要なfieldを渡し、ActiveRecordでDBに問い合わせる処理を記述する
-  def resolve(first_name:, last_name:, yob:, is_alive:)
-    User.create name: name, eimal: email
+  def resolve(name:, email:)
+    User.create name: name, email: email
+    User.update name: name, email: email
   end
 end
