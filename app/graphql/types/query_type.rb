@@ -1,10 +1,10 @@
 Types::QueryType = GraphQL::ObjectType.define do
 name 'Query'
 
-  field :users do
-    type types[Types::UserType]
+  field :tasks do
+    type types[Types::TaskType]
     resolve -> (obj, args, ctx)  {
-      User.all
+      Task.all
     }
   end
 end
