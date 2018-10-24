@@ -62,6 +62,14 @@ export default{
     }
   },
     methods:{
+      // 表示するタスクの取得
+      fetchTasks(){
+        this.$apollo.mutate({
+          // USER_SIGNINは、app/javascript/query/authUser.js で定義
+          // selectなのでmutaionではなくqueryかも
+          mutation: SELECT_TASK
+        })
+      },
     	// Todoタスクの追加
     	addTodo: function(evt) {
       	// フォームが空ならタスクを追加しない
