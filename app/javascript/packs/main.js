@@ -1,5 +1,7 @@
 import Vue from 'vue/dist/vue.esm.js'
+import App from './app.vue'
 
+// apollo
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -37,14 +39,9 @@ const selectTasks = gql `
 
 new Vue({
   el: '#app',
-  data: {
-    tasks: []
-  },
   provide: apolloProvider.provide(),
-  apollo: {
-    tasks:{
-      query: selectTasks
-    }
-  },
-  template:"<div>tasks:{{ tasks }}</div>"
+  components: { App },
+  // router,
+  // store,
+  template: '<App/>'
 })
