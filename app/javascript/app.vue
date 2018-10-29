@@ -21,6 +21,7 @@
       </ul>
       <ul class="collection">
         <h3>Done</h3>
+        <!-- タスクの移動　ドラッグ&ドロップ -->
         <draggable :list="finishedTasks"
                    :options="{group:'tasks'}">
           <li v-for="task in finishedTasks" class="collection-item">
