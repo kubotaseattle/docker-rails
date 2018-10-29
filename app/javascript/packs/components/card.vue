@@ -20,7 +20,8 @@
 
   // ページ遷移時、クエリを投げてtasksに格納しているつもり
   export default {
-    apollo: {
+    name: "card",
+      apollo: {
       tasks:{
         query: selectTasks
       }
