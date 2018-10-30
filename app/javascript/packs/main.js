@@ -1,5 +1,7 @@
 import Vue from 'vue/dist/vue.esm.js'
-import App from './app.vue'
+import App from '../app.vue'
+
+import router from '../router/index';
 
 // apollo
 import { ApolloClient } from 'apollo-client'
@@ -25,7 +27,7 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 })
 
-// Install the vue plugin
+// vue pluginのインストール
 Vue.use(VueApollo)
 
 // クエリの定義
@@ -40,8 +42,11 @@ const selectTasks = gql `
 new Vue({
   el: '#app',
   provide: apolloProvider.provide(),
-  components: { App },
-  // router,
+  components: {
+    App
+  },
+  router,
   // store,
+  // render: h => h(App),
   template: '<App/>'
 })
