@@ -9,25 +9,12 @@
 </template>
 
 <script>
-  import gql from 'graphql-tag';
+  import { getCards } from '../query/getCards.js';
 
-  // tasksテーブルのnameカラムを取得するクエリを定義
-  const selectTasks = gql `
-    {
-      tasks{
-        name
-      }
-    }
-  `;
-
-  // ページ遷移時、クエリを投げてtasksに格納しているつもり
   export default {
-    // components: {
-    //   card,
-    // },
     apollo: {
       tasks: {
-        query: selectTasks
+        query: getCards
       }
     }
   }

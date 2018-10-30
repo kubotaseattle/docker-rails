@@ -9,8 +9,6 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 
-import gql from 'graphql-tag'
-
 const httpLink = new HttpLink({
   // You should use an absolute URL here
   uri: 'http://localhost:3000/graphql',
@@ -29,15 +27,6 @@ const apolloProvider = new VueApollo({
 
 // vue pluginのインストール
 Vue.use(VueApollo)
-
-// クエリの定義
-const selectTasks = gql `
-  {
-  	tasks{
-      name
-    }
-  }
-`;
 
 new Vue({
   el: '#app',

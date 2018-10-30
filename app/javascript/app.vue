@@ -1,7 +1,8 @@
 <template>
   <div>
-    <p>testtesttest</p>
-    <!-- <router-link to="/card">cardコンポーネントの中身表示したい</router-link> -->
+    <h1>Tasks</h1>
+    <router-link to="/lane">laneコンポーネント</router-link>
+    <router-link to="/card">cardコンポーネント</router-link>
     <router-view/>
   </div>
 </template>

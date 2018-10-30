@@ -2,6 +2,7 @@ import Vue from 'vue/dist/vue.esm';
 import Router from 'vue-router';
 
 // ルート用のコンポーネントを読み込む
+import Lane from '../components/lane';
 import Card from '../components/card';
 
 // プラグインとして登録
@@ -13,6 +14,10 @@ const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
   // URLのパスと紐づくコンポーネントをマッピング
   routes: [
+    {
+      path: "/lane",
+      component: Lane
+    },
     {
       path: "/card",
       component: Card
