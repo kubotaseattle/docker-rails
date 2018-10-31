@@ -23,7 +23,9 @@
         query: getCards
       }
     },
-    props: ['lanes']
+    props: {
+      lanes : Object 
+    }
   }
 </script>
 
