@@ -16,11 +16,13 @@ const router = new Router({
   routes: [
     {
       path: "/lane",
-      component: Lane
-    },
-    {
-      path: "/card",
-      component: Card
+      component: Lane,
+      children: [
+        {
+          path: "",
+          component: Card
+        }
+      ]
     }
   ]
 });
