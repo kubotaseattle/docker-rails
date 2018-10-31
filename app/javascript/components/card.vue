@@ -1,8 +1,13 @@
 <template>
   <div id="app">
+    <p>lanes:{{ lanes }}</p>
     <ul>
       <li v-for="task in tasks"　class="card">
-        {{ task.name }}
+        <!-- <div v-show="taks.laneId === lane.id"> -->
+          {{ task.name }}
+          <b>lane_id{{ task.laneId }}</b>
+          <!-- レーンID{{ lane.id }} -->
+        <!-- <div> -->
       </li>
     </ul>
   </div>
@@ -13,14 +18,16 @@
 
   export default {
     apollo: {
+      // tasksにimportしたgetCardsクエリに対する回答を格納
       tasks: {
         query: getCards
       }
-    }
+    },
+    props: ['lanes']
   }
 </script>
 
-<style>
+<style scoped>
   .card{
     width: 200px;
     list-style: none;

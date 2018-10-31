@@ -5,6 +5,7 @@ export const getCards = gql `
   {
     tasks{
       name
+      laneId
     }
   }
   `;

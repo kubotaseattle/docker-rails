@@ -4,6 +4,7 @@ import Router from 'vue-router';
 // ルート用のコンポーネントを読み込む
 import Lane from '../components/lane';
 import Card from '../components/card';
+import AddCard from '../components/addCard';
 
 // プラグインとして登録
 Vue.use(Router);
@@ -19,8 +20,12 @@ const router = new Router({
       component: Lane,
       children: [
         {
-          path: "",
+          path: "/card",
           component: Card
+        },
+        {
+          path: "/addcard",
+          component: AddCard
         }
       ]
     }

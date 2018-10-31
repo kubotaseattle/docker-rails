@@ -4,5 +4,6 @@ class Types::TaskInputType < GraphQL::Schema::InputObject
 
   argument :id, ID, required: false
   argument :name, String, required: false, camelize: false
+  argument :lane_id, Integer, required: true
   # argument :email, String, required: false, camelize: false
 end
