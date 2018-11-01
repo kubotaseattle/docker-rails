@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <p>lanes:{{ lanes }}</p>
-    <ul>
-      <li v-for="task in tasks"　class="card">
-        <!-- <div v-show="taks.laneId === lane.id"> -->
+    <ul v-for="task in tasks"　class="card">
+      <div v-if="task.laneId === Number(lane.id)">
+        <li>
           {{ task.name }}
-          <b>lane_id{{ task.laneId }}</b>
-          <!-- レーンID{{ lane.id }} -->
-        <!-- <div> -->
-      </li>
+          <!-- 【task:{{ task }}】<br>
+          【lane:{{ lane }}】<br>
+          【task.id:{{ task.laneId }}】<br>
+          【lane.id:{{ lane.id }}】 -->
+        </li>
+      </div>
     </ul>
   </div>
 </template>
@@ -24,7 +25,7 @@
       }
     },
     props: {
-      lanes : Object 
+      lane: Object
     }
   }
 </script>
