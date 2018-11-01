@@ -8,4 +8,4 @@ export const getCards = gql `
       laneId
     }
   }
-  `;
+`;

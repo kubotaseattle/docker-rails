@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="lane in lanes"　class="">
-        {{ lane.name }}
-        <card v-bind:lane="lane"/>
-        <addcard/>
-        <!-- <router-link to="/card">cardコンポーネント</router-link>
-        <router-link to="/addcard">addcardコンポーネント</router-link> -->
-        <!-- <router-view /> -->
-      </li>
-    </ul>
+    <!-- <div class="collection"> -->
+      <ul>
+        <li v-for="lane in lanes"　class="collection">
+          {{ lane.name }}
+          <card v-bind:lane="lane"/>
+          <addcard/>
+          <!-- <router-link to="/card">cardコンポーネント</router-link>
+          <router-link to="/addcard">addcardコンポーネント</router-link> -->
+          <!-- <router-view /> -->
+        </li>
+      </ul>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -31,5 +33,8 @@
   }
 </script>
 
-<style>
+<style scope>
+  /* .collection{
+    float: left;
+  } */
 </style>

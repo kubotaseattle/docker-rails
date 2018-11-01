@@ -30,12 +30,15 @@
           variables: {
             task: {
               name: this.newCard,
+              // laneの情報を渡さないといけない
               laneId: 1
             }
           }
-        }),
-        // フォームを空にする
-        this.newCard = "";
+        }).then(() => {
+          // フォームを空にする
+          this.newCard = "";
+          this.$emit('refresh')
+        })
       }
     }
   }
