@@ -10,22 +10,29 @@
 </template>
 
 <script>
-  import { addCard } from '../query/addCard.js';
+  import { createCard } from '../query/createCard.js';
 
   export default{
-    data:function(){
+    data(){
       return{
         newCard:"",
       }
     },
     methods:{
   	// カードの追加
-    	addCard: function(evt) {
+    	addCard: function() {
       	// フォームが空ならカードを追加しない
         if(this.newCard == "") return;
+        console.log(this.newCard);
         // importしたaddCardクエリを投げる
         this.$apollo.mutate({
-          mutation: addCard
+          mutation: createCard,
+          variables: {
+            task: {
+              name: this.newCard,
+              laneId: 1
+            }
+          }
         }),
         // フォームを空にする
         this.newCard = "";

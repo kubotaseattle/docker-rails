@@ -2,7 +2,7 @@
   <div id="app">
     <ul>
       <li v-for="lane in lanes"　class="">
-        {{ lane.name }}：{{ lane.id }}
+        {{ lane.name }}
         <card v-bind:lane="lane"/>
         <addcard/>
         <!-- <router-link to="/card">cardコンポーネント</router-link>

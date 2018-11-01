@@ -3,12 +3,12 @@ module Types
 
     # create
     # create処理をするfieldを用意して、引数に何を与えるかの処理をブロックで記述
-    field :add_card, TaskType, null: true, description: "Create a task" do
+    field :create_card, TaskType, null: true, description: "Create a task" do
       argument :task, Types::TaskInputType, required: true
     end
 
     # ActiveRecordでデータベースに問い合わせる処理をメソッド形式で定義
-    def add_card(task:)
+    def create_card(task:)
       # to_hメソッドはオブジェクトをハッシュに変換する
       Task.create task.to_h
     end

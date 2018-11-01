@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 
 // insertのクエリ
-export const addCard = gql`
-	mutation addCard($task: TaskInputType!) {
-		addCard(task: $task) {
+export const createCard = gql`
+	mutation createCard($task: TaskInputType!) {
+		createCard(task: $task) {
 				id
 				name
 				laneId
