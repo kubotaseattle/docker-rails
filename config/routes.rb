@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   end
   post "/graphql", to: "graphql#execute"
   get 'home/index'
-  resources :items
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

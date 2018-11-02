@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <div class="collection"> -->
       <ul>
-        <li v-for="lane in lanes"　class="collection">
+        <li v-for="lane in lanes"　class="lane">
           {{ lane.name }}
           <card v-bind:lane="lane"/>
           <addcard/>
@@ -34,7 +34,9 @@
 </script>
 
 <style scope>
-  /* .collection{
+  .lane{
     float: left;
-  } */
+    list-style: none;
+  }
+
 </style>

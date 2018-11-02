@@ -1,14 +1,10 @@
 <template>
   <div id="app">
     <ul v-for="task in tasks">
-      <draggable>
-        <div v-if="task.laneId === Number(lane.id)">
+      <draggable :options="{group:'tasks'}" class="drag-drop-area">
+        <div v-show="task.laneId === Number(lane.id)">
           <li class="card">
             {{ task.name }}
-            <!-- 【task:{{ task }}】<br>
-            【lane:{{ lane }}】<br>
-            【task.id:{{ task.laneId }}】<br>
-            【lane.id:{{ lane.id }}】 -->
           </li>
         </div>
       </draggable>
@@ -43,5 +39,11 @@
     border: solid 1px;
     margin: 5px 0;
     cursor: pointer;
+    float: left;
+  }
+
+  /* 空レーンにカードを移動する領域の作成 */
+  .drag-drop-area{
+    min-height: 1px;
   }
 </style>

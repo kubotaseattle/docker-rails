@@ -31,13 +31,14 @@
             task: {
               name: this.newCard,
               // laneの情報を渡さないといけない
-              laneId: 1
+              laneId: id
             }
           }
         }).then(() => {
           // フォームを空にする
           this.newCard = "";
-          this.$emit('refresh')
+          // リロードせずに追加したカードをページに反映させたかったが、失敗
+          // this.$emit('refresh')
         })
       }
     }
