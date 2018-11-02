@@ -27,6 +27,7 @@
       }
     },
     props: {
+      //lanesの1つの要素のidとnameを親コンポーネントlaneから取得
       lane: Object
     }
   }
@@ -34,12 +35,11 @@
 
 <style scoped>
   .card{
-    width: 150px;
+    width: 100px;
     list-style: none;
     border: solid 1px;
     margin: 5px 0;
     cursor: pointer;
-    float: left;
   }
 
   /* 空レーンにカードを移動する領域の作成 */

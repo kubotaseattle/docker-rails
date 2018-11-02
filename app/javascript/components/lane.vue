@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <!-- <div class="collection"> -->
-      <ul>
-        <li v-for="lane in lanes"　class="lane">
-          {{ lane.name }}
-          <card v-bind:lane="lane"/>
-          <addcard/>
-          <!-- <router-link to="/card">cardコンポーネント</router-link>
-          <router-link to="/addcard">addcardコンポーネント</router-link> -->
-          <!-- <router-view /> -->
-        </li>
-      </ul>
-    <!-- </div> -->
+    <ul>
+      <li v-for="lane in lanes"　class="lane">
+        {{ lane.name }}
+        <card v-bind:lane="lane"/>
+        <addcard v-bind:lane="lane"/>
+      </li>
+    </ul>
   </div>
 </template>
 
