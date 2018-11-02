@@ -31,7 +31,7 @@
             task: {
               name: this.newCard,
               // laneの情報を渡さないといけない
-              laneId: id
+              laneId: 1
             }
           }
         }).then(() => {
