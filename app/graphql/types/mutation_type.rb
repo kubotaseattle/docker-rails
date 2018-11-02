@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    # メソッド名はスネークケース
 
     # create
     # create処理をするfieldを用意して、引数に何を与えるかの処理をブロックで記述
@@ -16,11 +17,11 @@ module Types
     # update
     # updateは成功（true）、失敗（false）が分かればいいので、戻り値はBoolean型
     # null制約 null;falseを設定したfieldは、フロント側でクエリを取得した時やmutationを実行した際にエラーが返るようになる
-    field :update_task, Boolean, null: false, description: "Update a task" do
+    field :update_card_laneid, Boolean, null: false, description: "Update" do
       argument :task, Types::TaskInputType, required: true
     end
 
-    def update_task(task:)
+    def update_card_laneid(task:)
       existing = Task.where(id: task[:id]).first
       #&.でnil以外なら更新されたデータのhashを返す
       existing&.update task.to_h

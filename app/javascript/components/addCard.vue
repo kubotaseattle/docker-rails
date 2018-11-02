@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <!-- v-on:submit.preventでリロード防止 -->
-    <form v-on:submit.prevent class="form">
+    <div class="form">
       <input type="text" v-model="newCard">
-      <button v-on:click="addCard(lane.id)">
+      <button v-on:click="addCard(newCard, lane.id)">
         Add
       </button>
+    </div>
       <!-- デバッグ用、あとで消す
       <p>lane.id:{{ lane.id }}</p> -->
-    </form>
   </div>
 </template>
 
@@ -22,7 +21,7 @@
       }
     },
     props: {
-      //lanesの1つの要素のidとnameを親コンポーネントlaneから取得
+      //lanesの要素1つのidとnameを親コンポーネントlaneから取得
       lane: Object
     },
     methods:{
@@ -30,14 +29,12 @@
     	addCard: function() {
       	// フォームが空ならカードを追加しない
         if(this.newCard == "") return;
-        console.log(this.lane.id);
-        // importしたaddCardクエリを投げる
+        // importしたcreateCardクエリを投げる
         this.$apollo.mutate({
           mutation: createCard,
           variables: {
             task: {
               name: this.newCard,
-              // laneIdの情報を受け取る
               laneId: parseInt(this.lane.id)
             }
           }

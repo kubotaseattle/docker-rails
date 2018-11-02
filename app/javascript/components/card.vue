@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <ul v-for="task in tasks">
-      <draggable :options="{group:'tasks'}" class="drag-drop-area">
+      <draggable :options="{group:'tasks'}"
+                  class="drag-drop-area"
+                  @start="onChange()"
+                  @end="onEnd()">
         <div v-show="task.laneId === Number(lane.id)">
           <li class="card">
             {{ task.name }}
@@ -15,6 +18,7 @@
 <script>
   import draggable from 'vuedraggable';
   import { getCards } from '../query/getCards.js';
+  import { updateCardLaneid } from '../query/updateCardLaneid.js';
 
   export default {
     components: {
@@ -27,8 +31,30 @@
       }
     },
     props: {
-      //lanesの1つの要素のidとnameを親コンポーネントlaneから取得
+      //lanesの要素1つのidとnameを親コンポーネントlaneから取得
       lane: Object
+    },
+    methods: {
+      onChange: function(evt, originalEvent) {
+
+        // Dragしたタスクを対象タスクとして扱う。
+        // this.$parent.targetTask = evt.draggedContext.element;
+        // console.log(this.$parent.targetTask);
+      },
+      onEnd: function(evt) {
+        alert();
+
+        // this.$apollo.mutate({
+        //   mutation: updateCardLaneid,
+        //   variables: {
+        //     task: {
+        //       //移動するカードのidを渡す
+        //       id: this.task.id,
+        //       //着地先のlaneIdを渡す
+        //       laneId: this.task.laneId
+        //     }
+        //   }
+      }
     }
   }
 </script>
