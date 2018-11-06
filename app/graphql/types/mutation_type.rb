@@ -2,7 +2,7 @@ module Types
   class MutationType < Types::BaseObject
     # メソッド名はスネークケース
 
-    # create
+    # createCard
     # create処理をするfieldを用意して、引数に何を与えるかの処理をブロックで記述
     field :create_card, TaskType, null: true, description: "Create a task" do
       argument :task, Types::TaskInputType, required: true
@@ -12,6 +12,15 @@ module Types
     def create_card(task:)
       # to_hメソッドはオブジェクトをハッシュに変換する
       Task.create task.to_h
+    end
+
+    # createLane
+    field :create_lane, LaneType, null: true, description: "Create a lane" do
+      argument :lane, Types::LaneInputType, required: true
+    end
+
+    def create_lane(lane:)
+      Lane.create lane.to_h
     end
 
     # update

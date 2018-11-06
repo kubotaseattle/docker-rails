@@ -30,6 +30,9 @@
 
 <style scope>
   .lane{
+    border: solid 1px;
+    margin: 10px;
+    padding: 0 10px;
     float: left;
     list-style: none;
   }

@@ -3,11 +3,12 @@
     <ul v-for="task in tasks">
       <draggable :options="{group:'tasks'}"
                   class="drag-drop-area"
-                  @start="onChange()"
-                  @end="onEnd()">
+                  v-bind:data-cat="task.laneId"
+                  v-on:end="onEnd(task.id,$event)">
         <div v-show="task.laneId === Number(lane.id)">
           <li class="card">
             {{ task.name }}
+            <!-- <deleteCard/> -->
           </li>
         </div>
       </draggable>
@@ -17,12 +18,14 @@
 
 <script>
   import draggable from 'vuedraggable';
+  // import deleteCard from './deleteCard';
   import { getCards } from '../query/getCards.js';
   import { updateCardLaneid } from '../query/updateCardLaneid.js';
 
   export default {
     components: {
-      draggable
+      draggable,
+      // deleteCard
     },
     apollo: {
       // tasksにimportしたgetCardsクエリに対する回答を格納
@@ -35,25 +38,26 @@
       lane: Object
     },
     methods: {
-      onChange: function(evt, originalEvent) {
-
-        // Dragしたタスクを対象タスクとして扱う。
-        // this.$parent.targetTask = evt.draggedContext.element;
-        // console.log(this.$parent.targetTask);
-      },
-      onEnd: function(evt) {
-        alert();
-
-        // this.$apollo.mutate({
-        //   mutation: updateCardLaneid,
-        //   variables: {
-        //     task: {
-        //       //移動するカードのidを渡す
-        //       id: this.task.id,
-        //       //着地先のlaneIdを渡す
-        //       laneId: this.task.laneId
-        //     }
-        //   }
+      // onChange: function(evt, originalEvent) {
+      //
+      //   Dragしたタスクを対象タスクとして扱う。
+      //   this.$parent.targetTask = evt.draggedContext.element;
+      //   console.log(this.$parent.targetTask);
+      // },
+      onEnd: function(id,evt) {
+        alert(evt.to.getAttribute("data-cat"));
+        this.$apollo.mutate({
+          mutation: updateCardLaneid,
+          variables: {
+            task: {
+              //移動するカードのidを渡す
+              // id: parseInt(this.task.id),
+              id: parseInt(id),
+              //着地先のlaneIdを渡す
+              laneId: evt.to.getAttribute("data-cat")
+            }
+          }
+        })
       }
     }
   }
